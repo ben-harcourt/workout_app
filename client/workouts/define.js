@@ -22,10 +22,25 @@ $(function(){
 				});
 			},
 			fetchAll:function(){
-
+				var getDefs=$.ajax({
+					type:"GET",
+					url: WorkoutLog.API_BASE+"definition",
+					headers:{
+						"Authorization": window.log.localStorage.getItem("sessionToken")
+					}
+				})
+				.done(function(data){
+						WorkoutLog.definition.userDefinitions=data;
+					})
+				.fail(function(err){
+					console.log(err);
+				});
 			}
 		}
 	});
 
 	$("#def-save").on("click", WorkoutLog.definition.create);
+	if(window.localStorage.getItem("sessionToken")){
+		WorkoutLog.definition.fetchAll();
+	}
 });
