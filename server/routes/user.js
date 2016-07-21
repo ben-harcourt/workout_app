@@ -11,7 +11,7 @@ router.post('/', function(req, res){
 		passwordHash: bcrypt.hashSync(pass,10) //TODO: make it hashed
 	}).then(
 	function createSuccess(user){
-		var token=jwt.sign({id:user.id}, "Shhhh_I'm_a_secret", {expiresIn: 60*60*24});
+		var token=jwt.sign({id:user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
 		res.json({
 			user:user,
 			message: 'created',
