@@ -1,10 +1,10 @@
 var router=require('express').Router();
 var sequelize=require('../db');
-var Definitions=sequelize.import('../models/definition');
+var Definition=sequelize.import('../models/definition');
 //create definition
 router.post('/', function(req, res){
-	var description=req.body.definitions.desc;
-	var logType=req.body.definitions.tpe;
+	var description=req.body.definition.desc;
+	var logType=req.body.definition.type;
 	var owner=req.user.id;
 
 	Definition.create({

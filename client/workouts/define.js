@@ -1,5 +1,5 @@
 $(function(){
-	$.extend(workoutLog,{
+	$.extend(WorkoutLog,{
 		definition:{
 			userDefinitions:[],
 			create: function(){
@@ -26,7 +26,7 @@ $(function(){
 					type:"GET",
 					url: WorkoutLog.API_BASE+"definition",
 					headers:{
-						"Authorization": window.log.localStorage.getItem("sessionToken")
+						"Authorization": window.localStorage.getItem("sessionToken")
 					}
 				})
 				.done(function(data){
