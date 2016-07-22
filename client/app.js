@@ -31,7 +31,12 @@ $(function() {
          return false;
       }
    });
-
+$('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+   var target=$(e.target).attr("href");
+   if(target==="#log"){
+      WorkoutLog.log.setDefinition();
+   }
+});
    // setHeader if we have a session (refresh of browser)
    var token = window.localStorage.getItem("sessionToken");
    if (token) {
